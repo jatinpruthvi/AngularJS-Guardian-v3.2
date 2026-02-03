@@ -1,0 +1,47 @@
+{
+  "name": "angularjs-guardian",
+  "version": "3.3.0",
+  "description": "Autonomous Code-Fixing System with AI-powered error detection and repair for AngularJS applications with Java/Tomcat backends",
+  "main": "guardian-v3.3-codex-tomcat-POC-COMPLETE.js",
+  "scripts": {
+    "start": "node guardian-v3.3-codex-tomcat-POC-COMPLETE.js",
+    "test": "echo \"No tests configured yet\" && exit 0",
+    "setup": "npm install && npx playwright install chromium",
+    "validate": "node -e \"require('./guardian-v3.3-codex-tomcat-POC-COMPLETE.js')\""
+  },
+  "keywords": [
+    "angularjs",
+    "guardian",
+    "autonomous",
+    "error-detection",
+    "code-fixing",
+    "ai",
+    "codex",
+    "openai",
+    "playwright",
+    "testing",
+    "automation",
+    "tomcat",
+    "java",
+    "devops"
+  ],
+  "author": "jatinpruthvi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/issues"
+  },
+  "homepage": "https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}

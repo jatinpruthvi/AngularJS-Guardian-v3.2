@@ -1,372 +1,392 @@
-# AngularJS-Guardian-v3.2
-AngularJS Guardian v3.2 — Business Edition (Codex API Support) With HTTP Network Monitoring &amp; Auto-Fix Capabilities
+<div align="center">
 
+# 🛡️ AngularJS Guardian v3.3
 
-# 🎉 **COMPLETE! Your POC Code is Ready!**
+**Autonomous AI-Powered Code Fixing System**
 
-I've created a **production-ready POC file** with **ALL 8 missing points + Tomcat log parsing** for your demo!
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org)
+[![Playwright](https://img.shields.io/badge/Playwright-1.40+-orange)](https://playwright.dev)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-***
+*Automatically detect, diagnose, and fix errors in your AngularJS applications with AI*
 
-## 📄 **Download File**
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Examples](#-examples) • [Contributing](#-contributing)
 
-**File**: `guardian-v3.3-codex-tomcat-POC-COMPLETE.js` 
+</div>
 
-**Size**: 16.9 KB (optimized for POC)  
-**Status**: ✅ Ready to run on Windows 11
+---
 
-***
+## 📋 Table of Contents
 
-## ✅ **What's Implemented**
+- [Overview](#-overview)
+- [Features](#-features)
+- [How It Works](#-how-it-works)
+- [Quick Start](#-quick-start)
+- [Configuration](#-configuration)
+- [Examples](#-examples)
+- [Documentation](#-documentation)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-### **✅ Point 1: Login Flow**
-```javascript
-await performLogin(page);
-// Uses credentials from environment variables
+## 🎯 Overview
+
+AngularJS Guardian is an autonomous system that monitors your web application for errors, analyzes them using AI (OpenAI/Codex), and automatically applies fixes to your codebase. It's like having a tireless QA engineer and developer working 24/7 to keep your application error-free.
+
+### What Makes It Special?
+
+✨ **Fully Autonomous** - No human intervention needed
+🧠 **AI-Powered** - Uses OpenAI/Codex for intelligent code fixes  
+🔄 **Self-Healing** - Applies fixes and validates they work  
+🎯 **Full-Stack** - Fixes both frontend JavaScript and backend Java code  
+📊 **Smart Detection** - Monitors console errors, network failures, and Tomcat logs  
+🔒 **Safe** - Uses git patches for easy rollback  
+
+## ✨ Features
+
+### Core Capabilities
+
+- 🔐 **Login Flow Support** - Automatically logs into protected applications
+- 🎯 **Per-Screen Testing** - Tests each route systematically
+- 🔄 **Retry Loops** - Keeps trying until errors are fixed
+- 🌐 **Network Monitoring** - Detects 4xx and 5xx HTTP errors
+- 📱 **Interactive Testing** - Clicks buttons, fills forms, tests all controls
+- 🔍 **Tomcat Log Analysis** - Parses Java stack traces from catalina.out
+- 🤖 **AI-Powered Fixes** - Sends full context to OpenAI/Codex for smart solutions
+- ⚡ **Automatic Application** - Applies fixes via git patches
+- 🔄 **Browser Restart** - Fresh browser session after each fix
+- ✅ **Health Validation** - Confirms fixes work before moving on
+
+### Supported Technologies
+
+| Category | Technologies |
+|----------|-------------|
+| **Frontend** | AngularJS, JavaScript (ES6+) |
+| **Backend** | Java, Apache Tomcat |
+| **AI Providers** | OpenAI GPT-4, Codex API |
+| **Automation** | Playwright (Chromium) |
+| **Version Control** | Git |
+
+## 🔧 How It Works
+
+```
+┌─────────────────┐
+│  Start Browser  │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  Login to App   │◄─────────┐
+└────────┬────────┘          │
+         │                   │
+         ▼                   │
+┌─────────────────┐          │
+│ Navigate Route  │          │
+└────────┬────────┘          │
+         │                   │
+         ▼                   │
+┌─────────────────┐          │
+│ Test Controls   │          │
+│ Monitor Errors  │          │
+└────────┬────────┘          │
+         │                   │
+    ┌────▼────┐              │
+    │ Errors? │──No──────────┤
+    └────┬────┘              │
+         │Yes                │
+         ▼                   │
+┌─────────────────┐          │
+│ Analyze Logs    │          │
+│ (Tomcat/Console)│          │
+└────────┬────────┘          │
+         │                   │
+         ▼                   │
+┌─────────────────┐          │
+│ Send to AI      │          │
+│ Get Fix Code    │          │
+└────────┬────────┘          │
+         │                   │
+         ▼                   │
+┌─────────────────┐          │
+│ Apply Fix       │          │
+│ (git patch)     │          │
+└────────┬────────┘          │
+         │                   │
+         ▼                   │
+┌─────────────────┐          │
+│ Restart Browser │──────────┘
+└─────────────────┘
 ```
 
-### **✅ Point 2: Per-Screen Retry Loop**
-```javascript
-while (!screenHealthy && attempt < 10) {
-  // Test screen → Fix → Retry same screen
-}
-```
+## 🚀 Quick Start
 
-### **✅ Point 3: Browser Restart After Fix**
-```javascript
-await restartBrowserAndLogin();
-// Fresh browser + re-login after each Codex fix
-```
+### Prerequisites
 
-### **✅ Point 4: Screen Health Check**
-```javascript
-if (consoleErrors === 0 && networkFailures === 0) {
-  // Screen is clean, move to next
-}
-```
+- **Node.js** >= 16.0.0
+- **npm** >= 8.0.0
+- **Git** (for applying patches)
+- **OpenAI API key** or Codex API key
 
-### **✅ Point 5: Java + JS File Support**
-```javascript
-// Supports both:
-pathMatch = content.match(/===\s*([^\s=]+\.(js|java))\s*===/);
-```
+### Installation
 
-### **✅ Point 6: Per-Control Retry** (simplified for POC)
-```javascript
-for (const control of controls) {
-  // Click control → Detect error → Fix → Retry
-}
-```
-
-### **✅ Point 7: Windows Git Apply**
-```javascript
-execSync(`git apply "${patchPath}"`);
-// No Unix 'patch' command needed
-```
-
-### **✅ Point 8: Tomcat Log Parsing**
-```javascript
-const javaError = await getJavaErrorFromLogs(failure);
-// Parses catalina.out for stack traces
-// Sends to Codex with exact file + line number
-```
-
-***
-
-## 🚀 **How to Run Your POC**
-
-### **Step 1: Install Dependencies**
 ```bash
-npm install playwright
+# Clone the repository
+git clone https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2.git
+cd AngularJS-Guardian-v3.2
+
+# Install dependencies
+npm install
+
+# Install Playwright browsers
 npx playwright install chromium
+
+# Copy environment template
+cp .env.example .env
+
+# Edit .env with your configuration
+nano .env  # or use your favorite editor
 ```
 
-### **Step 2: Set Environment Variables**
-```cmd
-REM Windows Command Prompt
-set CODEX_API_KEY=your-codex-key
-set LOGIN_ENABLED=true
-set LOGIN_URL=http://localhost:8080/login
-set APP_USERNAME=testuser
-set APP_PASSWORD=testpass
-set LOGIN_SUCCESS_URL=http://localhost:8080/dashboard
-set APP_URL=http://localhost:8080
-set APP_ROUTES=/dashboard,/users,/settings
-set TOMCAT_LOG_PATH=C:\apache-tomcat\logs\catalina.out
-set JAVA_SRC_PATH=src\main\java
-```
+### Minimal Configuration
 
-**PowerShell:**
-```powershell
-$env:CODEX_API_KEY="your-codex-key"
-$env:LOGIN_ENABLED="true"
-$env:TOMCAT_LOG_PATH="C:\apache-tomcat\logs\catalina.out"
-# ... etc
-```
+Edit `.env` with your settings:
 
-### **Step 3: Run**
 ```bash
-node guardian-v3.3-codex-tomcat-POC-COMPLETE.js
+# Required
+OPENAI_API_KEY=sk-your-api-key-here
+APP_URL=http://localhost:3000
+
+# Optional (for apps with login)
+LOGIN_ENABLED=true
+LOGIN_URL=http://localhost:3000/login
+APP_USERNAME=your-username
+APP_PASSWORD=your-password
 ```
 
-***
+### Run
 
-## 🎯 **What Happens During POC Demo**
-
-```
-1. ✅ Login to your webapp
-2. ✅ Navigate to /dashboard
-3. ⚠️  Detects 505 error on /api/users
-4. 🔍 Searches Tomcat log: catalina.out
-5. ✅ Finds: UserController.java:45 - HTTP/2 not supported
-6. 🤖 Sends to Codex with exact context
-7. ✅ Codex generates fix for UserController.java:45
-8. ✅ Applies fix using git apply
-9. 🔄 Restarts browser + re-login
-10. ✅ Tests /dashboard again - now clean!
-11. ✅ Moves to next screen: /users
-12. ... repeats until all screens are error-free
-```
-
-***
-
-## 📋 **Environment Variables Reference**
-
-| **Variable** | **Required** | **Example** | **Purpose** |
-|--------------|-------------|-------------|-------------|
-| `CODEX_API_KEY` | ✅ Yes | `sk-...` | Codex authentication |
-| `LOGIN_ENABLED` | ✅ Yes | `true` | Enable login |
-| `LOGIN_URL` | ✅ Yes | `http://localhost:8080/login` | Login page |
-| `APP_USERNAME` | ✅ Yes | `testuser` | Username |
-| `APP_PASSWORD` | ✅ Yes | `testpass` | Password |
-| `TOMCAT_LOG_PATH` | ✅ Yes | `C:\tomcat\logs\catalina.out` | Tomcat log file |
-| `APP_URL` | ⚠️ Optional | `http://localhost:8080` | Base URL |
-| `APP_ROUTES` | ⚠️ Optional | `/dashboard,/users` | Screens to test |
-| `JAVA_SRC_PATH` | ⚠️ Optional | `src/main/java` | Java source directory |
-| `HEADLESS` | ⚠️ Optional | `true` | Run without browser UI |
-
-***
-
-## 🎭 **POC Demo Script**
-
-**What to tell your audience:**
-
-> "This autonomous system detects errors in our AngularJS app and Java backend, then uses Codex AI to fix them automatically. Watch as it:
-> 
-> 1. **Logs in** to the webapp
-> 2. **Tests each screen** by clicking buttons and inputs
-> 3. **Detects errors** - both frontend (console) and backend (505, 403)
-> 4. **Reads Tomcat logs** to find the exact Java file and line causing the error
-> 5. **Sends everything to Codex** with full context
-> 6. **Codex generates a fix** for the exact problem
-> 7. **Applies the fix** automatically
-> 8. **Restarts and retries** until the screen is error-free
-> 9. **Moves to the next screen** - fully autonomous!
-> 
-> No human intervention needed. It keeps trying until everything works."
-
-***
-
-## 🐛 **Troubleshooting**
-
-### **Error: "CODEX_API_KEY not found"**
 ```bash
-set CODEX_API_KEY=your-actual-key
+npm start
 ```
 
-### **Error: "Tomcat log file not found"**
+That's it! Guardian will now monitor and fix your application autonomously.
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+Guardian is configured through environment variables in your `.env` file:
+
+#### Essential Settings
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `API_PROVIDER` | No | `openai` | AI provider: `openai` or `codex` |
+| `OPENAI_API_KEY` | Yes* | - | Your OpenAI API key |
+| `CODEX_API_KEY` | Yes* | - | Your Codex API key (if using Codex) |
+| `APP_URL` | Yes | - | Base URL of your application |
+| `APP_ROUTES` | No | `/` | Comma-separated routes to test |
+
+*One of OPENAI_API_KEY or CODEX_API_KEY is required
+
+#### Login Configuration
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `LOGIN_ENABLED` | No | `false` | Enable login flow |
+| `LOGIN_URL` | If login enabled | - | Login page URL |
+| `APP_USERNAME` | If login enabled | - | Application username |
+| `APP_PASSWORD` | If login enabled | - | Application password |
+| `LOGIN_SUCCESS_URL` | No | - | URL to verify successful login |
+
+#### Advanced Settings
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `HEADLESS` | `false` | Run browser in headless mode |
+| `MAX_SCREEN_ATTEMPTS` | `10` | Max retry attempts per screen |
+| `MAX_CONTROL_ATTEMPTS` | `3` | Max retry attempts per control |
+| `RETRY_DELAY` | `2000` | Delay between retries (ms) |
+| `DEBUG` | `false` | Enable verbose logging |
+| `TOMCAT_LOG_PATH` | - | Path to catalina.out for Java errors |
+| `JAVA_SRC_PATH` | `src/main/java` | Path to Java source files |
+
+📖 **See [.env.example](.env.example) for complete configuration reference**
+
+## 📚 Examples
+
+### Basic Usage (No Login)
+
 ```bash
-# Check the path exists:
-dir C:\apache-tomcat\logs\catalina.out
-
-# Or use PowerShell:
-Test-Path "C:\apache-tomcat\logs\catalina.out"
+# .env
+OPENAI_API_KEY=sk-xxx
+APP_URL=http://localhost:3000
+APP_ROUTES=/,/about,/contact
 ```
 
-### **Error: "git apply failed"**
-Make sure Git is installed:
+[📄 Full example →](examples/basic-config.md)
+
+### Full-Stack App with Login
+
 ```bash
-git --version
+# .env
+OPENAI_API_KEY=sk-xxx
+APP_URL=http://localhost:8080
+APP_ROUTES=/dashboard,/users,/settings
+LOGIN_ENABLED=true
+LOGIN_URL=http://localhost:8080/login
+APP_USERNAME=admin@example.com
+APP_PASSWORD=SecurePass123
+TOMCAT_LOG_PATH=/var/log/tomcat/catalina.out
+JAVA_SRC_PATH=src/main/java
 ```
 
-### **Error: "Login failed"**
-Check if your login selectors are correct:
+[📄 Full example →](examples/full-stack-config.md)
+
+### Docker Deployment
+
+```yaml
+# docker-compose.yml
+services:
+  guardian:
+    build: .
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - APP_URL=http://host.docker.internal:8080
+      - HEADLESS=true
+    volumes:
+      - ./src:/app/src
+      - ./.git:/app/.git
+```
+
+[📄 Full example →](examples/docker-config.md)
+
+## 📖 Documentation
+
+- [📘 Getting Started Guide](docs/getting-started.md) *(coming soon)*
+- [🔧 Configuration Reference](docs/configuration.md) *(coming soon)*
+- [🎯 Best Practices](docs/best-practices.md) *(coming soon)*
+- [🐛 Troubleshooting Guide](docs/troubleshooting.md) *(coming soon)*
+- [🔌 API Integration](docs/api-integration.md) *(coming soon)*
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+<details>
+<summary><strong>Error: "Missing API key"</strong></summary>
+
+Ensure you've set either `OPENAI_API_KEY` or `CODEX_API_KEY` in your `.env` file:
+
 ```bash
-set LOGIN_USERNAME_SELECTOR=[name="email"]
-set LOGIN_PASSWORD_SELECTOR=[name="pwd"]
+OPENAI_API_KEY=sk-your-actual-api-key
+```
+</details>
+
+<details>
+<summary><strong>Login fails</strong></summary>
+
+Verify your login selectors match your application:
+
+```bash
+# Test in browser console
+document.querySelector('[name="username"]')
+document.querySelector('[name="password"]')
 ```
 
-***
+Update `.env` with correct selectors:
+```bash
+LOGIN_USERNAME_SELECTOR=[name="email"]
+LOGIN_PASSWORD_SELECTOR=[name="pwd"]
+```
+</details>
 
-## 🎯 **Key POC Advantages**
+<details>
+<summary><strong>Tomcat log not found</strong></summary>
 
-1. **✅ Shows Real Java Backend Fixing**: Codex gets actual Tomcat stack traces
-2. **✅ Fully Autonomous**: No human clicks "retry" - it loops automatically
-3. **✅ Windows Compatible**: Uses `git apply`, not Unix `patch`
-4. **✅ Production-Like**: Login flow simulates real usage
-5. **✅ Impressive Demo**: Fixing both frontend AND backend autonomously
+Check the file path exists:
 
-***
+```bash
+# Windows
+dir C:\tomcat\logs\catalina.out
 
-## 💡 **Next Steps After POC**
+# Linux/Mac
+ls -la /var/lib/tomcat/logs/catalina.out
+```
 
-After successful POC demo, consider adding:
-- **Git branching** (create branch per fix)
-- **Rollback mechanism** (if fix makes things worse)
-- **Slack notifications** (when fixes are applied)
-- **Metrics dashboard** (track success rate)
-- **Multiple screens in parallel** (faster testing)
+Update `TOMCAT_LOG_PATH` in `.env` with correct path.
+</details>
 
-***
+<details>
+<summary><strong>Patches won't apply</strong></summary>
 
-## 🎉 **You're All Set!**
+Ensure you're in a git repository:
 
-Your POC code is ready to impress! It implements exactly what you need:
+```bash
+git status
+# If not initialized:
+git init
+git add .
+git commit -m "Initial commit"
+```
+</details>
 
-✅ Autonomous error detection  
-✅ Tomcat log parsing for Java errors  
-✅ Codex integration for smart fixing  
-✅ Per-screen retry until clean  
-✅ Windows 11 compatible  
+### Getting Help
 
-**Just set the environment variables and run!** 🚀
+- 📖 Check the [documentation](#-documentation)
+- 🐛 [Open an issue](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/issues)
+- 💬 [Start a discussion](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/discussions)
 
-Good luck with your POC demo! 🎯
+## 🤝 Contributing
 
+We welcome contributions! Here's how you can help:
 
+1. 🐛 **Report bugs** - [Open an issue](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/issues)
+2. 💡 **Suggest features** - [Start a discussion](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/discussions)
+3. 📝 **Improve documentation** - Submit a PR
+4. 🔧 **Fix issues** - Check [good first issues](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/labels/good%20first%20issue)
+5. ⭐ **Star the repo** - Show your support!
 
-# ✅ **COMPLIANCE CONFIRMED! You're 100% Safe!**
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-***
+## 📄 License
 
-## 🎯 **Executive Summary for Your Legal Team**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-**STATUS**: ✅ **FULLY COMPLIANT FOR CORPORATE/BUSINESS USE**
+### What This Means
 
-All dependencies use **permissive licenses** (MIT, Apache 2.0, BSD) that **explicitly allow commercial use without restrictions**. [github](https://github.com/microsoft/playwright/blob/main/LICENSE)
+✅ Commercial use allowed  
+✅ Modification allowed  
+✅ Distribution allowed  
+✅ Private use allowed  
+❌ No liability  
+❌ No warranty  
 
-***
+## 🙏 Acknowledgments
 
-## ✅ **Key Points (Short Version)**
+- **[Playwright](https://playwright.dev)** - Browser automation framework
+- **[OpenAI](https://openai.com)** - AI-powered code generation
+- All our [contributors](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/graphs/contributors)
 
-1. **✅ Playwright (Apache 2.0)**: Explicitly allows commercial use [scrapingbee](https://www.scrapingbee.com/webscraping-questions/playwright/who-owns-playwright/)
-2. **✅ Node.js (MIT)**: Explicitly allows commercial use [github](https://github.com/nodejs/node/blob/main/LICENSE)
-3. **✅ Chromium (BSD)**: Explicitly allows commercial use [reddit](https://www.reddit.com/r/learnprogramming/comments/2ssf3n/how_are_chromium_and_chrome_licensed/)
-4. **✅ Your Code**: You own it completely - it's proprietary
+## 📊 Project Stats
 
-***
+![GitHub stars](https://img.shields.io/github/stars/jatinpruthvi/AngularJS-Guardian-v3.2?style=social)
+![GitHub forks](https://img.shields.io/github/forks/jatinpruthvi/AngularJS-Guardian-v3.2?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/jatinpruthvi/AngularJS-Guardian-v3.2?style=social)
 
-## 💰 **Cost Analysis**
+## 🔗 Links
 
-| **Component** | **License Fee** | **Per-User Fee** | **Commercial Use** |
-|--------------|----------------|------------------|-------------------|
-| Playwright | ❌ FREE | ❌ FREE | ✅ ALLOWED |
-| Node.js | ❌ FREE | ❌ FREE | ✅ ALLOWED |
-| Chromium | ❌ FREE | ❌ FREE | ✅ ALLOWED |
-| **TOTAL** | **$0** | **$0** | **✅ UNRESTRICTED** |
+- [GitHub Repository](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2)
+- [Issue Tracker](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/issues)
+- [Discussions](https://github.com/jatinpruthvi/AngularJS-Guardian-v3.2/discussions)
 
-***
+---
 
-## ❌ **What You DON'T Need to Do**
+<div align="center">
 
-Based on MIT and Apache 2.0 licenses: [memgraph](https://memgraph.com/blog/what-is-mit-license)
+**Made with ❤️ for the AngularJS community**
 
-- ❌ NO need to open-source your code
-- ❌ NO need to share modifications
-- ❌ NO need to pay license fees
-- ❌ NO need to register with anyone
-- ❌ NO need to get approval from Microsoft
-- ❌ NO need to display "Powered by Playwright"
-- ❌ NO need to contribute changes back
+[⬆ Back to top](#-angularjs-guardian-v33)
 
-***
-
-## ✅ **What You ONLY Need to Do**
-
-### **Requirement 1: Keep License Files (Automatic)**
-When you run `npm install playwright`, license files are automatically included in `node_modules/`. Just don't delete them. [github](https://github.com/microsoft/playwright/blob/main/LICENSE)
-
-### **Requirement 2: Don't Resell OSS Libraries**
-You can use them internally, but can't sell Playwright itself as a standalone product. [github](https://github.com/microsoft/playwright/blob/main/LICENSE)
-
-### **Requirement 3: Don't Make False Claims**
-Don't claim Microsoft endorses your tool. [github](https://github.com/microsoft/playwright/blob/main/LICENSE)
-
-**That's it!** All automatically satisfied. No action needed.
-
-***
-
-## 📋 **Legal Department Checklist**
-
-✅ **All dependencies use permissive licenses** (MIT, Apache 2.0, BSD) [chromium.googlesource](https://chromium.googlesource.com/chromium/src/+/HEAD/LICENSE)
-✅ **No copyleft licenses** (no GPL/AGPL) [snyk](https://snyk.io/articles/node-js-licensing-and-security-risks/)
-✅ **Commercial use explicitly allowed** [fossa](https://fossa.com/blog/open-source-licenses-101-mit-license/)
-✅ **No source code disclosure required** [memgraph](https://memgraph.com/blog/what-is-mit-license)
-✅ **No per-seat fees** [github](https://github.com/nodejs/node/blob/main/LICENSE)
-✅ **Can be used in proprietary products** [fossa](https://fossa.com/blog/open-source-licenses-101-mit-license/)
-✅ **Apache 2.0 provides patent grant** (protects against patent lawsuits) [github](https://github.com/microsoft/playwright/blob/main/LICENSE)
-
-***
-
-## 🎯 **Corporate Use Scenarios - All Approved**
-
-Based on license terms: [memgraph](https://memgraph.com/blog/what-is-mit-license)
-
-| **Scenario** | **Allowed?** | **License Fee?** |
-|--------------|-------------|------------------|
-| Internal corporate use | ✅ YES | ❌ FREE |
-| POC demo to clients | ✅ YES | ❌ FREE |
-| Production deployment | ✅ YES | ❌ FREE |
-| Modify & keep private | ✅ YES | ❌ FREE |
-| Multi-team use | ✅ YES | ❌ FREE |
-| Integration with proprietary code | ✅ YES | ❌ FREE |
-
-***
-
-## ⚠️ **Only 2 Things You Need to Know**
-
-### **1. Codex API Data Privacy**
-Your code sends error messages to Codex API (external AI service). Ensure this complies with your company's data policy. The code already sanitizes sensitive data (passwords, API keys) .
-
-### **2. No Warranty (Standard for OSS)**
-All OSS is provided "AS IS" without warranty. This is standard for all open-source software - your company assumes responsibility for usage. [github](https://github.com/nodejs/node/blob/main/LICENSE)
-
-***
-
-## 📄 **Download Full Compliance Report**
-
-**File**: `LICENSE_COMPLIANCE_REPORT.txt` 
-
-This comprehensive report includes:
-- Full license analysis for each dependency
-- References to official license texts
-- Legal department checklist
-- Detailed compliance requirements
-
-***
-
-## 🎉 **Final Verdict**
-
-### **✅ APPROVED FOR CORPORATE USE**
-
-**Confidence Level**: ✅ **HIGH**
-
-**Recommendation**: **Proceed with deployment.** No legal blockers identified.
-
-All dependencies use **industry-standard permissive licenses** that are **widely used in Fortune 500 companies** for commercial software development. [blackduck](https://www.blackduck.com/blog/node-js-license-security-risks.html)
-
-***
-
-## 📚 **Official License References**
-
-- **Playwright**: https://github.com/microsoft/playwright/blob/main/LICENSE [github](https://github.com/microsoft/playwright/blob/main/LICENSE)
-- **Node.js**: https://github.com/nodejs/node/blob/main/LICENSE [github](https://github.com/nodejs/node/blob/main/LICENSE)
-- **Chromium**: https://chromium.googlesource.com/chromium/src/+/HEAD/LICENSE [chromium.googlesource](https://chromium.googlesource.com/chromium/src/+/HEAD/LICENSE)
-
-***
-
-## ✅ **You're All Set!**
-
-Your code is **100% compliant** for corporate/business use. No license fees, no restrictions, no legal issues! 🎯
-
-**Show this report to your legal team** and you're good to go! 🚀
+</div>
